@@ -17,7 +17,7 @@ Permite que o usuário cadastre entradas, saídas e investimentos, acompanhe o s
 
 - PHP (sem frameworks)
 - MySQL com PDO (prepared statements)
-- HTML, CSS e JavaScript puros
+- HTML, CSS puros (JS ainda não utilizado)
 
 ## 🚀 Como rodar localmente
 
