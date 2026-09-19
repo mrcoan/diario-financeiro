@@ -10,6 +10,7 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $usuarioId = $_SESSION['usuario_id'];
+
 $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -116,7 +117,7 @@ $nomeUsuario = $_SESSION['usuario_nome'];
 
                     <div class="form-grupo">
                         <label for="senha">Senha:</label>
-                        <input type="password" name="senha" id="senha" placeholder="Deixe em branco para manter a senha atual">
+                        <input type="password" name="senha" id="senha" minlength="8" placeholder="Deixe em branco para manter a senha atual">
                     </div>
 
                     <button type="submit" class="btn-form">Salvar</button>

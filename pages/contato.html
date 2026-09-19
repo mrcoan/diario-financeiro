@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Financeiro - Seu Controle Pessoal</title>
+
+    <!-- ícone na barra do navegador -->
+    <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <!-- Logo -->
+        <div class="logo-header">
+            <a href="../index.html"><img src="../img/logo.png" alt="Diario Financeiro Logo"></a>
+        </div>
+
+        <!-- nav menu -->
+        <div class="nav-menu">
+            <a href="recursos.html">Recursos</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+        </div>
+
+        <!--nav links -->
+        <div class="nav-links">
+            <a href="../login.php" class="btn-primario">Entrar</a>
+            <a href="../cadastro.php" class="btn-secundario">Cadastrar-se</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Contato -->
+        <section id="contato">
+            <h2>Fale Conosco</h2>
+            <p>Tem alguma dúvida, sugestão ou feedback? Envie uma mensagem para a nossa equipe.</p>
+
+            <form class="form-contato" action="#" method="post">
+                <div class="form-grupo">
+                    <label for="nome">Seu nome:</label>
+                    <input type="text" name="nome" id="nome" placeholder="Seu Nome Completo" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="email">Seu e-mail:</label>
+                    <input type="email" name="email" id="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea name="mensagem" id="mensagem" rows="4" placeholder="Como podemos ajudar?"
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn-form">Enviar mensagem</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div>
+                <img src="../img/logo.png" alt="Logo Diário Financeiro">
+                <br>
+                <span>
+                    &copy; 2026 Diário Financeiro.
+                    <br>
+                    Todos os direitos reservados.
+                </span>
+            </div>
+
+            <!-- nav footer -->
+            <div>
+                <h3>Navegação</h3>
+
+                <div class="nav-footer">
+                    <a href="recursos.html">Recursos</a>
+                    <a href="sobre.html">Sobre</a>
+                    <a href="contato.html">Contato</a>
+                </div>
+            </div>
+
+            <!--nav links -->
+            <div>
+                <a href="../login.php" class="btn-primario">Entrar</a>
+                <a href="../cadastro.php" class="btn-secundario">Cadastrar</a>
+            </div>
+
+
+        </footer>
+
+    </main>
+
+    <!-- Javascript -->
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

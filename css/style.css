@@ -9,29 +9,44 @@
 }
 
 :root {
-    --cor-texto-botao: #ffffff;          /* texto dos botões */            
+    --cor-texto-botao: #ffffff;
+    /* texto dos botões */
 
-    --botao-secundario: #10b981;         /* botão secundário, botão cta e botão formulário */
-    --botao-secundario-hover: #059669;   /* botão secundário, botão cta e botão formulário hover */
+    --botao-secundario: #10b981;
+    /* botão secundário, botão cta e botão formulário */
+    --botao-secundario-hover: #059669;
+    /* botão secundário, botão cta e botão formulário hover */
 
-    --cor-texto-padrao: #303030;         /* cor padrão de texto e footer */
-    --cor-paragrafo: #64748b;            /* parágrafos */
+    --cor-texto-padrao: #303030;
+    /* cor padrão de texto e footer */
+    --cor-paragrafo: #64748b;
+    /* parágrafos */
 
-    --botao-editar: #5e87e0;             /* botão editar transação */
-    --botao-editar-hover: #3e63b3;       /* botão editar transação hover */
+    --botao-editar: #5e87e0;
+    /* botão editar transação */
+    --botao-editar-hover: #3e63b3;
+    /* botão editar transação hover */
 
-    --saldo-saida: #992415;              /* saída das movimentações */
+    --saldo-saida: #992415;
+    /* saída das movimentações */
     --saldo-investimento: #7936c5;
 
-    --botao-excluir: #eb7868;            /* botão excluir */
-    --botao-excluir-hover: #c55749;      /* botão excluir hover */
+    --botao-excluir: #eb7868;
+    /* botão excluir */
+    --botao-excluir-hover: #c55749;
+    /* botão excluir hover */
 
-    --botao-primario: #adb5be;           /* botão primário */
-    --botao-primario-borda: #cbd5e1;     /* borda botão primário */
+    --botao-primario: #adb5be;
+    /* botão primário */
+    --botao-primario-borda: #cbd5e1;
+    /* borda botão primário */
 
-    --card-borda: #e4e9f0;               /* borda dos cards */
-    --bg-padrao: #f8fafc;                /* background padrão */
-    --bg-branco: #ffffff;                /* background card */
+    --card-borda: #e4e9f0;
+    /* borda dos cards */
+    --bg-padrao: #f8fafc;
+    /* background padrão */
+    --bg-branco: #ffffff;
+    /* background card */
 }
 
 body {
@@ -96,7 +111,7 @@ button {
 .btn-secundario,
 .btn-cta,
 .btn-form {
-    padding: 10px 20px;
+    padding: 5px;
     border-radius: 5px;
     font-weight: bold;
     transition: all .2s ease;
@@ -373,6 +388,15 @@ footer img {
     border-radius: 10px;
 }
 
+.form-filtro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+
+}
+
 .form-grupo {
     display: flex;
     flex-direction: column;
@@ -461,6 +485,7 @@ textarea:focus,
 .opcoes {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 5px;
@@ -489,10 +514,9 @@ textarea:focus,
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
     .navbar {
-        position: inherit;
         flex-direction: column;
         gap: 20px;
     }
@@ -503,7 +527,15 @@ textarea:focus,
         gap: 10px;
     }
 
+    .form-filtro {
+        flex-direction: column;
+    }
+
     .display-cards-recursos {
+        flex-direction: column;
+    }
+
+    .card-painel-extrato {
         flex-direction: column;
     }
 

@@ -11,33 +11,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome']);
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
+    $confirmar_senha = $_POST['confirmar_senha'];
 
-    if (!empty($nome) && !empty($email) && !empty($senha)) {
+    if (!empty($nome) && !empty($email) && !empty($senha) && !empty($confirmar_senha)) {
 
-        // criptografia da senha
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        if (strlen($senha) < 8) {
+            $mensagem = "A senha deve ter pelo menos 8 caracteres";
+        } else if ($senha === $confirmar_senha) {
+            // criptografia da senha
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-        try {
-            // prepara a execução
-            $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':nome', $nome);
-            $stmt->bindValue(':email', $email);
-            $stmt->bindValue(':senha', $senhaHash);
+            try {
+                // prepara a execução
+                $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(':nome', $nome);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':senha', $senhaHash);
 
-            if ($stmt->execute()) {
-                header('Location: login.php?status=cadastro_sucesso');
-                exit;
+                if ($stmt->execute()) {
+                    header('Location: login.php?status=cadastro_sucesso');
+                    exit;
+                }
+            } catch (PDOException $e) {
+                //trata e-mail duplicado
+                if ($e->getCode() == 23000) {
+                    $mensagem = "Este e-mail já está cadastrado.";
+                } else {
+                    error_log($e->getMessage());
+                    $mensagem = "Erro ao cadastrar.";
+                }
             }
-        } catch (PDOException $e) {
-            //trata e-mail duplicado
-            if ($e->getCode() == 23000) {
-                $mensagem = "Este e-mail já está cadastrado.";
-            } else {
-                error_log($e->getMessage());
-                $mensagem = "Erro ao cadastrar.";
-                exit;
-            }
+        } else {
+            $mensagem = "As senhas não coincidem.";
         }
     } else {
         $mensagem = "Preencha todos os campos";
@@ -93,7 +99,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-grupo">
                 <label for="senha">Senha:</label>
-                <input type="password" name="senha" id="senha" required>
+                <input type="password" name="senha" id="senha" minlength="8" required>
+            </div>
+
+            <div class="form-grupo">
+                <label for="confirmar_senha">Confirmar senha:</label>
+                <input type="password" name="confirmar_senha" id="confirmar_senha" minlength="8" required>
             </div>
 
             <button type="submit" class="btn-form">Cadastrar</button>

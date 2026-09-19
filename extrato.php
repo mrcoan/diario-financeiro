@@ -48,7 +48,7 @@ if (isset($_GET['data_inicio']) || isset($_GET['data_fim']) || isset($_GET['tipo
 
 // 2. Recupera da SESSÃO (ou define o padrão para o primeiro acesso)
 $data_inicio = $_SESSION['data_inicio'] ?? date('Y-m-01');
-$data_fim    = $_SESSION['data_fim']    ?? date('Y-m-t');
+$data_fim = $_SESSION['data_fim'] ?? date('Y-m-t');
 $tipo_filtro = $_SESSION['tipo_filtro'] ?? 'todos';
 
 try {
@@ -128,31 +128,32 @@ try {
         <p>Consulte e filtre todo o seu histórico de lançamentos.</p>
     </section>
 
+    <?php if (!empty($mensagem)): ?>
+        <span class="mensagem"><?php echo $mensagem ?></span>
+    <?php endif; ?>
+
     <hr>
 
     <section id="filtro-extrato">
 
-        <div class="layout-display">
+        <h2>Filtro de pesquisa</h2>
 
-            <!-- Filtro de pesquisa -->
-            <div class="card-painel">
+        <!-- Filtro de pesquisa -->
+        <div class="card-painel">
 
-                <h3>Filtro de pesquisa</h3>
-                <br>
+            <form action="extrato.php" method="get" class="form-filtro">
 
-                <form action="extrato.php" method="get">
+                <div class="form-grupo">
+                    <label for="tipo_filtro">Tipo:</label>
+                    <select name="tipo_filtro" id="tipo_filtro">
+                        <option value="todos" <?= $tipo_filtro === 'todos' ? 'selected' : '' ?>>Todos</option>
+                        <option value="entrada" <?= $tipo_filtro === 'entrada' ? 'selected' : '' ?>>Entrada</option>
+                        <option value="saida" <?= $tipo_filtro === 'saida' ? 'selected' : '' ?>>Saída</option>
+                        <option value="investimento" <?= $tipo_filtro === 'investimento' ? 'selected' : '' ?>>Investimento</option>
+                    </select>
+                </div>
 
-                    <div class="form-grupo">
-                        <label for="tipo_filtro">Tipo:</label>
-                        <select name="tipo_filtro" id="tipo_filtro">
-                            <option value="todos" <?= $tipo_filtro === 'todos' ? 'selected' : '' ?>>Todos</option>
-                            <option value="entrada" <?= $tipo_filtro === 'entrada' ? 'selected' : '' ?>>Entrada</option>
-                            <option value="saida" <?= $tipo_filtro === 'saida' ? 'selected' : '' ?>>Saída</option>
-                            <option value="investimento" <?= $tipo_filtro === 'investimento' ? 'selected' : '' ?>>Investimento</option>
-                        </select>
-                    </div>
-
-                    <!-- Categoria - Em desenvolvimento
+                <!-- Categoria - Em desenvolvimento
                     <div class="form-grupo">
                         <label for="categoria_filtro">Categoria:</label>
                         <select name="categoria_filtro" id="tipo_filtro">
@@ -160,32 +161,26 @@ try {
                         </select>
                     </div>
                     -->
+                <div class="form-grupo">
+                    <label for="data_inicio">De:</label>
+                    <input type="date" name="data_inicio" id="data_inicio" value="<?= $data_inicio ?>">
+                </div>
 
-                    <div class="form-grupo">
-                        <label for="data_inicio">De:</label>
-                        <input type="date" name="data_inicio" id="data_inicio" value="<?= $data_inicio ?>">
-                    </div>
+                <div class="form-grupo">
+                    <label for="data_fim">Até:</label>
+                    <input type="date" name="data_fim" id="data_fim" value="<?= $data_fim ?>">
+                </div>
 
-                    <div class="form-grupo">
-                        <label for="data_fim">Até:</label>
-                        <input type="date" name="data_fim" id="data_fim" value="<?= $data_fim ?>">
-                    </div>
+                <div>
+                    <button type="submit" class="btn-form" title="Filtrar"><img src="img/filter-icon.png" alt="Filtrar"></button>
+                </div>
 
-                    <div class="opcoes">
-                        <button type="submit" class="btn-form" title="Filtrar"><img src="img/filter-icon.png" alt="Filtrar"></button>
-                    </div>
-
-                </form>
-            </div>
-
+            </form>
         </div>
+
     </section>
 
     <hr>
-
-    <?php if (!empty($mensagem)): ?>
-        <span class="mensagem"><?php echo $mensagem ?></span>
-    <?php endif; ?>
 
     <!-- Extrato das movimentações -->
     <section id="extrato">
@@ -211,6 +206,7 @@ try {
                             <?php endif; ?>
                             <span>Valor: <strong>R$ <?= number_format($transacao['valor'], 2, ',', '.') ?></strong></span>
                             <span>Data: <strong><?= date('d/m/Y', strtotime($transacao['data_transacao'])) ?></strong></span>
+                            <span>Tipo: <strong><?= ucfirst($transacao['tipo']) ?></strong></span>
                             <span>Categoria: <strong>Em desenvolvimento</strong></span>
                         </div>
                         <div class="opcoes">

@@ -126,6 +126,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>Inclua lançamentos para seu controle financeiro.</p>
     </section>
 
+    <?php if (!empty($mensagem)): ?>
+        <span class="mensagem"><?php echo $mensagem ?></span>
+    <?php endif; ?>
+
     <hr>
 
     <section id="lancamentos">
@@ -136,10 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Lançamentos -->
             <div class="card-painel">
-
-                <?php if (!empty($mensagem)): ?>
-                    <span class="mensagem"><?php echo $mensagem ?></span>
-                <?php endif; ?>
 
                 <h3>Lançamento de movimentação</h3>
                 <br>

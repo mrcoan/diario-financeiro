@@ -8,6 +8,8 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
+$data_inicio = $_SESSION['data_inicio'] ?? date('Y-m-01');
+
 $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['status'])) {
@@ -139,6 +141,8 @@ try {
     <!-- Resumo mensal -->
     <section id="resumo-financeiro">
         <h2>Resumo Mensal</h2>
+        <span>Resumo das movimentações de <?= date("m/Y", strtotime($data_inicio)) ?></span>
+
 
         <div class="layout-display">
             <div class="card-painel">
@@ -172,6 +176,8 @@ try {
     <!-- Últimas Movimentações -->
     <section id="ultimas-movimentacoes">
         <h2>Últimas Movimentações</h2>
+        <span>Mostrando dados de <?= date("m/Y", strtotime($data_inicio)) ?></span>
+
         <div class="layout-display">
 
             <?php if (!empty($ultimasMovimentacoes)): ?>
@@ -189,6 +195,7 @@ try {
                         <?php endif; ?>
                         <span>Valor: <strong>R$ <?= number_format($movimentacao['valor'], 2, ',', '.') ?></strong></span>
                         <span>Data: <strong><?= date('d/m/Y', strtotime($movimentacao['data_transacao'])) ?></strong></span>
+                        <span>Tipo: <strong><?= ucfirst($movimentacao['tipo']) ?></strong></span>
                         <span>Categoria: <strong>Em desenvolvimento</strong></span>
 
                     </div>
@@ -200,7 +207,11 @@ try {
             <?php endif; ?>
 
         </div>
-        <a href="extrato.php" class="btn-secundario">Ver extrato completo</a>
+        <div class="opcoes">
+
+            <a href="extrato.php" class="btn-secundario">Extrato completo</a>
+            <a href="process/processar_lancamento.php" class="btn-secundario">Novo lançamento</a>
+        </div>
     </section>
 
 
