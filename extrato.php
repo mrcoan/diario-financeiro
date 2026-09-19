@@ -110,6 +110,7 @@ try {
 
         <!-- nav menu -->
         <div class="nav-menu">
+            <a href="process/processar_lancamento.php">Incluir Lançamento</a>
             <a href="painel.php">Painel</a>
             <a href="extrato.php">Extrato Completo</a>
         </div>
@@ -132,75 +133,6 @@ try {
     <section id="filtro-extrato">
 
         <div class="layout-display">
-
-            <!-- Lançamentos -->
-            <div class="card-painel">
-
-                <h3>Lançamento de movimentação</h3>
-                <br>
-
-                <form action="process/processar_lancamento.php" method="post">
-
-                    <div class="form-grupo">
-                        <label for="descricao">Descrição:</label>
-                        <input type="text" name="descricao" id="descricao" placeholder="Ex: Supermercado" required>
-                    </div>
-
-                    <div class="form-grupo">
-                        <label for="valor">Valor:</label>
-                        <input type="number" name="valor" id="valor" step="0.01" min="0.01" placeholder="0,00" required>
-                    </div>
-
-                    <div class="form-grupo">
-                        <label for="tipo">Tipo de Transação:</label>
-                        <div class="opcoes-radio">
-                            <label class="saldo-positivo"><input type="radio" name="tipo" value="entrada" required> Entrada</label>
-                            <label class="saldo-negativo"><input type="radio" name="tipo" value="saida" required> Saída</label>
-                            <label class="saldo-investimento"><input type="radio" name="tipo" value="investimento" required> Investimento</label>
-                        </div>
-                    </div>
-
-                    <!-- Categoria - Em desenvolvimento
-                    <div class="form-grupo">
-                        <label for="categoria">Categoria (opcional):</label>
-                        <select name="categoria_id" id="categoria">
-                            <option value="">Sem categoria</option>
-
-                            <optgroup label="ENTRADAS">
-                                <option value="1">Salário / Proventos</option>
-                                <option value="2">Renda Extra / Freelance</option>
-                                <option value="3">Venda de Itens</option>
-                            </optgroup>
-
-                            <optgroup label="SAÍDAS">
-                                <option value="4">Alimentação</option>
-                                <option value="5">Moradia</option>
-                                <option value="6">Transporte</option>
-                                <option value="7">Saúde</option>
-                                <option value="8">Lazer & Estilo de Vida</option>
-                            </optgroup>
-
-                            <optgroup label="INVESTIMENTOS">
-                                <option value="9">Reserva de Emergência</option>
-                                <option value="10">Renda Fixa / CDB</option>
-                                <option value="11">Ações / Renda Variável</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    -->
-
-                    <div class="form-grupo">
-                        <label for="data">Data:</label>
-                        <input type="date" name="data" id="data" value="<?= date('Y-m-d') ?>" required>
-                    </div>
-
-                    <div class="opcoes">
-                        <button type="submit" class="btn-form" title="Adicionar"><img src="img/add.png" alt="Adicionar lançamento"></button>
-                    </div>
-
-                </form>
-
-            </div>
 
             <!-- Filtro de pesquisa -->
             <div class="card-painel">

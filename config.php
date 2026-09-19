@@ -76,6 +76,7 @@ $nomeUsuario = $_SESSION['usuario_nome'];
 
         <!-- nav menu -->
         <div class="nav-menu">
+            <a href="process/processar_lancamento.php">Incluir Lançamento</a>
             <a href="painel.php">Painel</a>
             <a href="extrato.php">Extrato Completo</a>
         </div>
