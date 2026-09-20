@@ -63,7 +63,7 @@ a {
 
 p {
     color: var(--cor-paragrafo);
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: justify;
 }
@@ -82,10 +82,14 @@ hr {
 
 #hero,
 #recursos,
+#como-funciona,
 #sobre,
-#contato {
+#valores,
+#para-quem,
+#contato,
+#faq {
     text-align: center;
-    padding: 50px;
+    padding: 50px 20px;
 }
 
 .mensagem {
@@ -104,6 +108,7 @@ hr {
 button {
     font-size: inherit;
     display: inline-block;
+    line-height: inherit;
     cursor: pointer;
 }
 
@@ -246,19 +251,19 @@ button {
 
 /* RECURSOS SECTION */
 
-#recursos h2 {
+#recursos h2, #como-funciona h2 {
     margin-bottom: 20px;
 }
 
-#recursos p {
+#recursos p, #como-funciona p {
     margin-bottom: 30px;
 }
 
 .display-cards-recursos {
+    max-width: 900px;
     display: flex;
     flex-direction: row;
     gap: 20px;
-    max-width: 900px;
     margin: 0 auto 30px;
 }
 
@@ -291,26 +296,49 @@ button {
 
 /* SOBRE SECTION */
 
-#sobre {
-    background-color: var(--bg-branco);
-}
-
-#sobre h2 {
+#sobre h2, 
+#valores h2,
+#para-quem h2 {
     margin-bottom: 20px;
 }
 
-#sobre p {
+#sobre p,
+#valores p,
+#para-quem p {
     margin-bottom: 30px;
 }
 
 /* CONTATO SECTION */
 
-#contato h2 {
+#contato h2, #faq h2 {
     margin-bottom: 20px;
 }
 
 #contato p {
     margin-bottom: 30px;
+}
+
+.faq-lista {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-lista details {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: var(--bg-branco);
+    border: 1px solid var(--card-borda);
+    border-radius: 10px;
+}
+
+.faq-lista summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.faq-lista summary:hover {
+    color: var(--botao-secundario);
 }
 
 /* FOOTER */
@@ -381,7 +409,7 @@ footer img {
 
 .form-contato {
     padding: 30px;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     background-color: var(--bg-branco);
     border: 1px solid var(--card-borda);

@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Mensagem de boas-vindas -->
     <section id="boas-vindas">
         <h1>Olá, <?= htmlspecialchars($nomeUsuario, ENT_QUOTES, 'UTF-8') ?>!</h1>
-        <p>Inclua lançamentos para seu controle financeiro.</p>
+        <p>Adicione movimentações à sua conta.</p>
     </section>
 
     <?php if (!empty($mensagem)): ?>
@@ -134,38 +134,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <section id="lancamentos">
 
+        <h2>Lançamento de movimentação</h2>
+        <span>Inclua lançamentos para atualizar seu controle financeiro.</span>
 
+        <!-- Lançamentos -->
+        <div class="card-painel">
 
-        <div class="layout-display">
+            <form action="processar_lancamento.php" method="post">
 
-            <!-- Lançamentos -->
-            <div class="card-painel">
+                <div class="form-grupo">
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" name="descricao" id="descricao" placeholder="Ex: Supermercado" required>
+                </div>
 
-                <h3>Lançamento de movimentação</h3>
-                <br>
+                <div class="form-grupo">
+                    <label for="valor">Valor:</label>
+                    <input type="number" name="valor" id="valor" step="0.01" min="0.01" placeholder="0,00" required>
+                </div>
 
-                <form action="processar_lancamento.php" method="post">
-
-                    <div class="form-grupo">
-                        <label for="descricao">Descrição:</label>
-                        <input type="text" name="descricao" id="descricao" placeholder="Ex: Supermercado" required>
+                <div class="form-grupo">
+                    <label for="tipo">Tipo de Transação:</label>
+                    <div class="opcoes-radio">
+                        <div><label class="saldo-positivo"><input type="radio" name="tipo" value="entrada" required> Entrada</label></div>
+                        <div><label class="saldo-negativo"><input type="radio" name="tipo" value="saida" required> Saída</label></div>
+                        <div><label class="saldo-investimento"><input type="radio" name="tipo" value="investimento" required> Investimento</label></div>
                     </div>
+                </div>
 
-                    <div class="form-grupo">
-                        <label for="valor">Valor:</label>
-                        <input type="number" name="valor" id="valor" step="0.01" min="0.01" placeholder="0,00" required>
-                    </div>
-
-                    <div class="form-grupo">
-                        <label for="tipo">Tipo de Transação:</label>
-                        <div class="opcoes-radio">
-                            <div><label class="saldo-positivo"><input type="radio" name="tipo" value="entrada" required> Entrada</label></div>
-                            <div><label class="saldo-negativo"><input type="radio" name="tipo" value="saida" required> Saída</label></div>
-                            <div><label class="saldo-investimento"><input type="radio" name="tipo" value="investimento" required> Investimento</label></div>
-                        </div>
-                    </div>
-
-                    <!-- Categoria - Em desenvolvimento
+                <!-- Categoria - Em desenvolvimento
                     <div class="form-grupo">
                         <label for="categoria">Categoria (opcional):</label>
                         <select name="categoria_id" id="categoria">
@@ -194,18 +190,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     -->
 
-                    <div class="form-grupo">
-                        <label for="data">Data:</label>
-                        <input type="date" name="data" id="data" value="<?= date('Y-m-d') ?>" required>
-                    </div>
+                <div class="form-grupo">
+                    <label for="data">Data:</label>
+                    <input type="date" name="data" id="data" value="<?= date('Y-m-d') ?>" required>
+                </div>
 
-                    <div class="opcoes">
-                        <button type="submit" class="btn-form" title="Adicionar"><img src="../img/add.png" alt="Adicionar lançamento"></button>
-                    </div>
+                <div class="opcoes">
+                    <button type="submit" class="btn-form" title="Adicionar"><img src="../img/add.png" alt="Adicionar lançamento"></button>
+                </div>
 
-                </form>
-
-            </div>
+            </form>
 
         </div>
 

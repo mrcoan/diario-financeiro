@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </form>
 
-        <span>Esqueceu a senha? <a href="recuperar_senha.php" class="link-rodape">Recuperar senha</a></span>
+        <span>Esqueceu a senha? <a href="process/recuperar_senha.php" class="link-rodape">Recuperar senha</a></span>
 
         <span>Não possui uma conta? <a href="cadastro.php" class="link-rodape">Criar conta</a></span>
 

@@ -40,7 +40,7 @@ O banco tem duas tabelas principais:
 - **usuarios**: dados de login (nome, e-mail, senha com hash)
 - **transacoes**: cada lançamento, com tipo (`entrada`, `saida` ou `investimento`), valor, data e vínculo com o usuário (`ON DELETE CASCADE`)
 
-Veja os detalhes completos em [`schema.sql`](./schema.sql).
+Veja os detalhes completos em [`schema.sql`](./database/schema.sql).
 
 ## 🔒 Segurança já implementada
 
@@ -51,10 +51,14 @@ Veja os detalhes completos em [`schema.sql`](./schema.sql).
 
 ## 🧭 Melhorias futuras (roadmap)
 
+- [ ] Botão de mostrar/ocultar senha no login e cadastro
+- [ ] Menu lateral (pra resolver o aperto do menu no mobile)
+- [ ] Exigir senha atual para confirmar troca de senha
+- [ ] Exclusão de conta
+- [ ] Recuperar senha
 - [ ] Categorias de transações (tabela própria, já planejada no banco)
 - [ ] Proteção CSRF nos formulários
 - [ ] Trocar exclusão de transação de GET para POST
-- [ ] Exigir senha atual para confirmar troca de senha
 - [ ] Limite de tentativas de login (proteção contra força bruta)
 - [ ] Gráficos de evolução mensal
 

@@ -137,6 +137,7 @@ try {
     <section id="filtro-extrato">
 
         <h2>Filtro de pesquisa</h2>
+        <span>Encontre suas movimentações por tipo de transação, e no período que escolher.</span>
 
         <!-- Filtro de pesquisa -->
         <div class="card-painel">

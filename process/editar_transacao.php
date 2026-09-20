@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header class="navbar">
         <!-- Logo -->
         <div class="logo-header">
-            <a href="painel.php"><img src="../img/logo.png" alt="Diario Financeiro Logo"></a>
+            <a href="../painel.php"><img src="../img/logo.png" alt="Diario Financeiro Logo"></a>
         </div>
 
         <!-- nav menu -->
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <section id="configuracoes">
 
-        <h2>Movimentação</h2>
+        <h2>Editar movimentação</h2>
         <div class="layout-display">
             <div class="card-painel">
 
@@ -138,15 +138,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="form-grupo">
                         <label for="tipo">Tipo de Transação:</label>
-                        <div class="opcoes-radio">
+                        <div>
                             <label class="saldo-positivo">
                                 <input type="radio" name="tipo" value="entrada" <?= $transacao['tipo'] === 'entrada' ? 'checked' : '' ?> required> Entrada
                             </label>
+                        </div>
+                        <div>
                             <label class="saldo-negativo">
                                 <input type="radio" name="tipo" value="saida" <?= $transacao['tipo'] === 'saida' ? 'checked' : '' ?> required> Saída
                             </label>
+                        </div>
+                        <div>
                             <label class="saldo-investimento">
-                                <input type="radio" name="tipo" value="investimento"  <?= $transacao['tipo'] === 'investimento' ? 'checked' : '' ?> required> Investimento
+                                <input type="radio" name="tipo" value="investimento" <?= $transacao['tipo'] === 'investimento' ? 'checked' : '' ?> required> Investimento
                             </label>
                         </div>
                     </div>
@@ -156,9 +160,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="date" name="data_transacao" id="data_transacao" value="<?= $transacao['data_transacao'] ?>" required>
                     </div>
 
-
-                    <button type="submit" class="btn-form">Salvar</button>
-
+                    <div class="opcoes">
+                        <button type="submit" class="btn-form">Salvar</button>
+                    </div>
                 </form>
             </div>
         </div>
