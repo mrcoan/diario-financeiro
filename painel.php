@@ -141,7 +141,7 @@ try {
     <!-- Resumo mensal -->
     <section id="resumo-financeiro">
         <h2>Resumo Mensal</h2>
-        <span>Resumo das movimentações de <?= date("m/Y", strtotime($data_inicio)) ?></span>
+        <span>Resumo das movimentações de <?= date("m/Y", strtotime($data_inicio)) ?>.</span>
 
 
         <div class="layout-display">
@@ -176,7 +176,7 @@ try {
     <!-- Últimas Movimentações -->
     <section id="ultimas-movimentacoes">
         <h2>Últimas Movimentações</h2>
-        <span>Mostrando dados de <?= date("m/Y", strtotime($data_inicio)) ?></span>
+        <span>Mostrando dados de <?= date("m/Y", strtotime($data_inicio)) ?>.</span>
 
         <div class="layout-display">
 

@@ -187,7 +187,7 @@ try {
     <section id="extrato">
 
         <h2>Extrato Financeiro</h2>
-        <span>Mostrando dados de <?= date("d/m/Y", strtotime($data_inicio)) ?> até <?= date('d/m/Y', strtotime($data_fim)) ?></span>
+        <span>Mostrando dados de <?= date("d/m/Y", strtotime($data_inicio)) ?> até <?= date('d/m/Y', strtotime($data_fim)) ?>.</span>
         <span><?= count($transacoes) ?> registro(s) encontrado(s).</span>
 
         <div class="layout-display-extrato">
