@@ -2,6 +2,9 @@
 
 session_start();
 session_regenerate_id(true);
+
+$base = '';
+
 require_once 'config/conexao.php';
 
 $mensagem = '';
@@ -12,11 +15,15 @@ if (isset($_GET['status'])) {
 
     switch ($status) {
         case 'cadastro_sucesso':
-            $mensagem = "Usuário cadastrado com sucesso!";
+            $mensagem = "Usuário cadastrado com sucesso! Faça login para começar.";
             break;
 
         case 'logout':
             $mensagem = "Sessão encerrada com sucesso.";
+            break;
+        
+        case 'conta_excluida':
+            $mensagem = "Conta excluída com sucesso.";
             break;
 
         default:
@@ -46,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['usuario_nome'] = $usuario['nome'];
 
                 // redirecionar para o painel.php
-                header('Location: painel.php');
+                header('Location: app/painel.php');
                 exit;
             } else {
                 $mensagem = "E-mail ou senha incorretos.";
@@ -62,41 +69,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php require 'templates/head.php' ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Diário Financeiro</title>
+<!-- CSS -->
+<link rel="stylesheet" href="css/style.css">
 
-    <!-- ícone na barra do navegador -->
-    <link rel="shortcut icon" href="img/logo.ico" type="image">
+<title>Login - Diário Financeiro</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="page-auth">
 
-    <div class="login-cadastro">
+    <!-- Mensagem Toast -->
+    <?php require 'templates/toast.php' ?>
 
-        <?php if (!empty($mensagem)): ?>
-            <span class="mensagem"><?php echo $mensagem ?></span>
-        <?php endif; ?>
-
-        <img src="img/logo.png" alt="Logo Diário Financeiro">
+    <main class="login-cadastro" data-aos="fade-right">
 
         <h2>Login</h2>
-        <p>Acesse sua conta</p>
 
         <form action="login.php" method="post">
-
 
             <div class="form-grupo">
                 <label for="email">E-mail:</label>
@@ -105,23 +96,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-grupo">
                 <label for="senha">Senha:</label>
-                <input type="password" name="senha" id="senha" required>
+                <div class="campo-senha">
+                    <input type="password" name="senha" id="senha" required>
+                    <button type="button" id="mostrar-senha" onclick="toggleSenha('senha', this)" class="btn-senha"><i class="fa-solid fa-eye"></i></button>
+                </div>
             </div>
 
-            <button type="submit" class="btn-form">Entrar</button>
+            <button type="submit" class="btn btn-form">Entrar</button>
 
         </form>
 
-        <span>Esqueceu a senha? <a href="process/recuperar_senha.php" class="link-rodape">Recuperar senha</a></span>
+        <div>
+            <p>Esqueceu a senha? <a href="recuperar_senha.php" class="link-rodape">Recuperar senha</a></p>
+            <p>Não possui uma conta? <a href="cadastro.php" class="link-rodape">Criar conta</a></p>
+        </div>
 
-        <span>Não possui uma conta? <a href="cadastro.php" class="link-rodape">Criar conta</a></span>
+        <div>
+            <a href="index.php" class="btn btn-primario">Voltar</a>
+        </div>
 
-        <span><a href="index.html" class="btn-primario">Voltar</a></span>
-
-    </div>
+    </main>
 
     <!-- Javascript -->
-    <script src="js/script.js"></script>
+    <?php require 'templates/bibliotecas_js.php' ?>
 
 </body>
 

@@ -1,5 +1,7 @@
 <?php
 
+$base = '';
+
 require_once 'config/conexao.php';
 
 $mensagem = '';
@@ -52,38 +54,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php require 'templates/head.php' ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Diário Financeiro</title>
+<!-- CSS -->
+<link rel="stylesheet" href="css/style.css">
 
-    <!-- ícone na barra do navegador -->
-    <link rel="shortcut icon" href="img/logo.ico" type="image">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<title>Cadastro - Diário Financeiro</title>
 </head>
 
 <body class="page-auth">
 
-    <div class="login-cadastro">
+    <!-- Mensagem Toast -->
+    <?php require 'templates/toast.php' ?>
 
-        <?php if (!empty($mensagem)): ?>
-            <span class="mensagem"><?php echo $mensagem ?></span>
-        <?php endif; ?>
-
-        <img src="img/logo.png" alt="Logo Diário Financeiro">
+    <main class="login-cadastro" data-aos="fade-right">
 
         <h2>Cadastre-se</h2>
-        <p>Crie uma nova conta</p>
 
         <form action="cadastro.php" method="post">
 
@@ -99,27 +85,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-grupo">
                 <label for="senha">Senha:</label>
-                <input type="password" name="senha" id="senha" minlength="8" required>
+                <div class="campo-senha">
+                    <input type="password" name="senha" id="senha" minlength="8" required>
+                    <button type="button" id="mostrar-senha" class="btn-senha" onclick="toggleSenha('senha', this)"><i class="fa-solid fa-eye"></i></button>
+                </div>
             </div>
 
             <div class="form-grupo">
                 <label for="confirmar_senha">Confirmar senha:</label>
-                <input type="password" name="confirmar_senha" id="confirmar_senha" minlength="8" required>
+                <div class="campo-senha">
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" minlength="8" required>
+                    <button type="button" id="confirmar-senha" class="btn-senha" onclick="toggleSenha('confirmar_senha', this)"><i class="fa-solid fa-eye"></i></button>
+                </div>
             </div>
 
-            <button type="submit" class="btn-form">Cadastrar</button>
+            <button type="submit" class="btn btn-form">Cadastrar</button>
 
         </form>
 
-        <span>Já possui uma conta? <a href="login.php" class="link-rodape">Entrar</a></span>
+        <div>
+            <p>Já possui uma conta? <a href="login.php" class="link-rodape">Entrar</a></p>
+        </div>
 
-        <span><a href="index.html" class="btn-primario">Voltar</a></span>
+        <div>
+            <a href="index.php" class="btn btn-primario">Voltar</a>
+        </div>
 
-    </div>
-
+    </main>
 
     <!-- Javascript -->
-    <script src="js/script.js"></script>
+    <?php require 'templates/bibliotecas_js.php' ?>
 
 </body>
 
